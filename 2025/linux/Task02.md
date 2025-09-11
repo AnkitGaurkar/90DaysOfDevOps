@@ -87,14 +87,14 @@ ls -l devops_workspace/project_notes.txt
 Output:
 
 ```bash
--rw-r----- 1 devops_user devops_team 0 Feb  4 12:22 devops_workspace/project_notes.txt
+-rw-r----- 1 devops_users devops_team 12 Sep 11 05:30 devops_workspace/project_notes.txt
 ```
 
 - `-rw-r-----`: The permissions are set as:
   - `rw-` (Owner: Read and Write)
   - `r--` (Group: Read)
   - `---` (Others: No access)
-- `devops_user devops_user`: The file is owned by the `devops_user` user and `devops_user` group.
+- `devops_users devops_users`: The file is owned by the `devops_users` user and `devops_users` group.
 
 ---
 
@@ -122,7 +122,7 @@ ls -ld devops_workspace
 Output:
 
 ```bash
-drwxr-x--- 2 devops_user devops_team 4096 Feb  4 12:22 devops_workspace/
+drwxr-x--- 2 devops_users devops_team  4096 Sep 11 05:30 devops_workspace
 ```
 
 - `drwxr-x---`: The permissions are set as:
@@ -132,7 +132,7 @@ drwxr-x--- 2 devops_user devops_team 4096 Feb  4 12:22 devops_workspace/
 
 #### IMPORTANT ❗
 
-Ensure that `devops_user` is accessible by `devops_team`:
+Ensure that `devops_users` is accessible by `devops_team`:
 
 ```bash
 sudo chgrp devops_team /home/devops_user
@@ -148,7 +148,7 @@ sudo chmod g+rx /home/devops_user
 Switch to the owner (e.g., `root`) and try to edit the file:
 
 ```bash
-su - devops_user
+su - devops_users
 echo "This is a test note." >> devops_workspace/project_notes.txt
 cat devops_workspace/project_notes.txt
 ```
@@ -185,13 +185,13 @@ Switch to a user who is not the owner or in the group and try to access the file
 
 ```bash
 sudo su - another_user
-cat /home/devops_user/devops_workspace/project_notes.txt
+cat /home/devops_users/devops_workspace/project_notes.txt
 ```
 
 Output:
 
 ```bash
-cat: /home/devops_user/devops_workspace/project_notes.txt: Permission denied
+cat: /home/devops_users/devops_workspace/project_notes.txt: Permission denied
 ```
 
 ---
@@ -214,13 +214,14 @@ cat: /home/devops_user/devops_workspace/project_notes.txt: Permission denied
 1. **File Permissions**:
 
 ```bash
--rw-r----- 1 devops_user devops_team 0 Feb  4 12:22 devops_workspace/project_notes.txt
+-rw-r----- 1 devops_users devops_team 12 Sep 11 05:30 devops_workspace/project_notes.txt
 ```
 
 2. **Directory Permissions**:
 
 ```bash
-drwxr-x--- 2 devops_user devops_team 4096 Feb  4 12:22 devops_workspace/
+drwxr-x--- 2 devops_users devops_team  4096 Sep 11 05:30 devops_workspace
+
 ```
 
 3. **Permission Tests**:
